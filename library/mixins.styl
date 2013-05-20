@@ -1,0 +1,266 @@
+/*
+ * A collection of zero mixins a corrects to browsers support.
+ */
+
+ie ?= true
+
+// Adds a vendor prefixes.
+-vendor()
+    vendors = shift(arguments)
+
+    for prefix in vendors
+        add-property('-' + prefix + '-' + current-property[0], arguments)
+
+    arguments
+
+/* Animation, http//www.w3.org/TR/css3-animations/
+   ========================================================================== */
+
+// Corrects a property the animation.
+// @see http://caniuse.com/#feat=css-animation
+animation()
+    animation -vendor(webkit moz ms o, arguments)
+
+animation-name()
+    animation-name -vendor(webkit moz ms o, arguments)
+
+animation-delay()
+    animation-delay -vendor(webkit moz ms o, arguments)
+
+animation-direction()
+    animation-direction -vendor(webkit moz ms o, arguments)
+
+animation-duration()
+    animation-duration -vendor(webkit moz ms o, arguments)
+
+animation-iteration-count()
+    animation-iteration-count -vendor(webkit moz ms o, arguments)
+
+animation-play-state()
+    animation-play-state -vendor(webkit moz ms o, arguments)
+
+animation-timing-function()
+    animation-timing-function -vendor(webkit moz ms o, arguments)
+
+animation-fill-mode()
+    animation-fill-mode -vendor(webkit moz ms o, arguments)
+
+/* Display
+   ========================================================================== */
+
+// Corrects a property the appearance.
+// @see http://www.w3.org/TR/css3-ui/#appearance
+appearance()
+    appearance -vendor(webkit moz ms o, arguments)
+
+// Corrects a property the background-clip.
+// @see http://caniuse.com/#feat=background-img-opts
+background-clip()
+    background-clip -vendor(webkit, arguments)
+
+// Corrects a property the border-image.
+// @see http://caniuse.com/#feat=border-image
+border-image()
+    border-image -vendor(webkit moz ms o, arguments)
+
+// Corrects a property the border-radius.
+// @see http://caniuse.com/#feat=border-radius
+border-radius()
+    border-radius -vendor(webkit moz, arguments)
+
+border-top-left-radius()
+    border-top-left-radius -vendor(webkit moz, arguments)
+
+border-top-right-radius()
+    border-top-right-radius -vendor(webkit moz, arguments)
+
+border-bottom-right-radius()
+    border-bottom-right-radius -vendor(webkit moz, arguments)
+
+border-bottom-left-radius()
+    border-bottom-left-radius -vendor(webkit moz, arguments)
+
+// Corrects a property the box-shadow.
+// @see http://caniuse.com/#feat=css-boxshadow
+box-shadow()
+    box-shadow -vendor(webkit moz, arguments)
+
+// Corrects a property the box-sizing.
+// @see http://caniuse.com/#feat=css3-boxsizing
+box-sizing()
+    box-sizing -vendor(webkit moz, arguments)
+
+// Corrects a property value the inline-block.
+// @see http://caniuse.com/#feat=inline-block
+display()
+    display arguments
+
+    // @fallback IE 6/7
+    if arguments is 'inline-block'
+        *display inline if ie
+        *zoom: 1 if ie
+
+// Corrects a property the hyphens.
+// @see http://caniuse.com/#feat=css-hyphens
+hyphens()
+    hyphens -vendor(webkit moz ms o, arguments)
+
+// Corrects a property value the min-height.
+// @see http://caniuse.com/#feat=minmaxwh
+min-height()
+    min-height arguments
+    height auto !important
+
+    // @fallback IE 6
+    _height arguments if ie
+
+// Corrects a property the opacity.
+// @see http://caniuse.com/#feat=css-opacity
+opacity()
+    opacity -vendor(khtml moz, arguments)
+
+    if ie
+        filter:unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(arguments * 100) + ')')  // IE 8
+        filter:unquote('alpha(opacity=' + round(arguments * 100) + ')')  // IE 5-7
+
+// Corrects a property the text-overflow.
+// @see http://caniuse.com/#feat=text-overflow
+text-overflow(arguments)
+    text-overflow -vendor(o, arguments)
+
+// Corrects a property the user-select.
+// @see http://caniuse.com/#search=user-select
+user-select()
+    user-select -vendor(webkit-touch-callout webkit khtml moz ms o, arguments)
+
+/* Filter Effects, http//www.w3.org/TR/filter-effects/
+   ========================================================================== */
+
+// Corrects a property the filter.
+// @see http://caniuse.com/#feat=css-filters
+filter()
+    if match('progid', unquote("" + arguments + ""))
+        filter arguments
+    else
+        filter -vendor(webkit, arguments)
+
+filter-margin()
+    filter-margin -vendor(webkit, arguments)
+
+filter-margin-top()
+    filter-margin-top -vendor(webkit, arguments)
+
+filter-margin-right()
+    filter-margin-right -vendor(webkit, arguments)
+
+filter-margin-bottom()
+    filter-margin-bottom -vendor(webkit, arguments)
+
+filter-margin-left()
+    filter-margin-left -vendor(webkit, arguments)
+
+color-interpolation-filters()
+    color-interpolation-filters -vendor(webkit, arguments)
+
+/* Flexbox, http://www.w3.org/TR/css3-flexbox/
+   ========================================================================== */
+
+// Corrects a property the flexbox model.
+// @see http://caniuse.com/#feat=flexbox
+flex()
+    flex -vendor(webkit moz ms o, arguments)
+
+flex-grow()
+    flex-grow -vendor(webkit moz ms o, arguments)
+
+flex-shrink()
+    flex-shrink -vendor(webkit moz ms o, arguments)
+
+flex-basis()
+    flex-basis -vendor(webkit moz ms o, arguments)
+
+align-items()
+    align-items -vendor(webkit moz ms o, arguments)
+
+align-self()
+    align-self -vendor(webkit moz ms o, arguments)
+
+align-content()
+    align-content -vendor(webkit moz ms o, arguments)
+
+justify-content()
+    justify-content -vendor(webkit moz ms o, arguments)
+
+/* Transforms, http://www.w3.org/TR/css3-transforms/
+   ========================================================================== */
+
+// Corrects a property the backface-visibility.
+// @see http://caniuse.com/#search=backface-visibility
+backface-visibility()
+    backface-visibility -vendor(webkit moz ms o, arguments)
+
+// Corrects a property the perspective.
+// @see http://caniuse.com/#search=perspective
+perspective()
+    perspective -vendor(webkit moz ms o, arguments)
+
+perspective-origin()
+    perspective-origin -vendor(webkit moz ms o, arguments)
+
+// Corrects a property the transform.
+// @see http://caniuse.com/#feat=transforms
+transform()
+    transform -vendor(webkit moz ms o, arguments)
+
+transform-origin()
+    transform-origin -vendor(webkit moz ms o, arguments)
+
+transform-style()
+    transform-style -vendor(webkit moz ms o, arguments)
+
+transform-matrix()
+    transform -vendor(webkit moz ms o, matrix(arguments))
+
+transform-translate()
+    transform -vendor(webkit moz ms o, translate(arguments))
+
+transform-translate3d()
+    transform -vendor(webkit moz ms o, translate3d(arguments))
+
+transform-scale()
+    transform -vendor(webkit moz ms o, scale(arguments))
+
+transform-rotate()
+    transform -vendor(webkit moz ms o, rotate(arguments))
+
+transform-skew()
+    transform -vendor(webkit moz ms o, skew(arguments))
+
+/* Transitions
+   ========================================================================== */
+
+// Corrects a property the transition.
+// @see http://caniuse.com/#feat=css-transitions
+transition()
+    transition -vendor(webkit moz ms o, arguments)
+
+transition-delay()
+    transition-delay -vendor(webkit moz ms o, arguments)
+
+transition-duration()
+    transition-duration -vendor(webkit moz ms o, arguments)
+
+transition-property()
+    transition-property -vendor(webkit moz ms o, arguments)
+
+transition-timing-function()
+    transition-timing-function -vendor(webkit moz ms o, arguments)
+
+/* Others
+   ========================================================================== */
+
+// Corrects a property the overflow-scrolling.
+// @see http://johanbrook.com/browsers/native-momentum-scrolling-ios-5/
+overflow-scrolling()
+    -webkit-overflow-scrolling touch
+    overflow: scroll

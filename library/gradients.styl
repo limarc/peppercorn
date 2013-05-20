@@ -1,0 +1,19 @@
+/*
+ * A collection of gradients with correct to browsers support.
+ */
+
+ie ?= true
+
+// Simple vertical gradient.
+gradient-vertical(top, bottom)
+    background-color top                                          // Old browsers
+    background -moz-linear-gradient(top, top 0%, bottom 100%)     // FF 3.6+
+    background -webkit-gradient(linear, left top, left bottom, color-stop(0%, top), color-stop(100%, bottom)) // Chrome,Safari4+
+    background -webkit-linear-gradient(top, top 0%, bottom 100%)  // Chrome 10+, Safari 5.1+
+    background -o-linear-gradient(top, top 0%, bottom 100%)       // Opera 11.10+
+    background -ms-linear-gradient(top, top 0%, bottom 100%)      // IE 10+
+    background linear-gradient(top, top 0%, bottom 100%)          // W3C
+
+    if ie
+        filter unquote('progid:DXImageTransform.Microsoft.gradient(startColorstr=' + top + ', endColorstr=' + bottom + ', GradientType=0)') // @fallback IE6-9
+
