@@ -2,7 +2,7 @@
 Peppercorn is a collection mixins and utils for stylus.
 
 
-## Лицензия
+## License
 [The MIT License (MIT)](http://opensource.org/licenses/mit-license.php)
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy of
