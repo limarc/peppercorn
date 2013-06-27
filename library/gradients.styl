@@ -5,15 +5,27 @@
 ie ?= true
 
 // Simple vertical gradient.
-gradient-vertical(top, bottom)
-    background-color top                                          // Old browsers
-    background -moz-linear-gradient(top, top 0%, bottom 100%)     // FF 3.6+
-    background -webkit-gradient(linear, left top, left bottom, color-stop(0%, top), color-stop(100%, bottom)) // Chrome,Safari4+
-    background -webkit-linear-gradient(top, top 0%, bottom 100%)  // Chrome 10+, Safari 5.1+
-    background -o-linear-gradient(top, top 0%, bottom 100%)       // Opera 11.10+
-    background -ms-linear-gradient(top, top 0%, bottom 100%)      // IE 10+
-    background linear-gradient(top, top 0%, bottom 100%)          // W3C
+gradient-vertical(t, b)
+    background-color t                                     // Old browsers
+    background -moz-linear-gradient(top, t 0%, b 100%)     // FF 3.6+
+    background -webkit-gradient(linear, left top, left bottom, color-stop(0%, t), color-stop(100%, b)) // Chrome, Safari4+
+    background -webkit-linear-gradient(top, t 0%, b 100%)  // Chrome 10+, Safari 5.1+
+    background -o-linear-gradient(top, t 0%, b 100%)       // Opera 11.10+
+    background -ms-linear-gradient(top, t 0%, b 100%)      // IE 10+
+    background linear-gradient(to bottom, t 0%, b 100%)    // W3C
 
     if ie
-        filter unquote('progid:DXImageTransform.Microsoft.gradient(startColorstr=' + top + ', endColorstr=' + bottom + ', GradientType=0)') // @fallback IE6-9
+        filter unquote('progid:DXImageTransform.Microsoft.gradient(startColorstr=' + t + ', endColorstr=' + b + ', GradientType=0)') // @fallback IE 6-9
 
+// Simple horizontal gradient.
+gradient-horizontal(l, r)
+    background-color l                                     // Old browsers
+    background -moz-linear-gradient(left, l 0%, r 100%)    // FF 3.6+
+    background -webkit-gradient(linear, left top, right top, color-stop(0%, l), color-stop(100%, r)) // Chrome, Safari4+
+    background -webkit-linear-gradient(left, l 0%, r 100%) // Chrome 10+, Safari 5.1+
+    background -o-linear-gradient(left, l 0%, r 100%)      // Opera 11.10+
+    background -ms-linear-gradient(left, l 0%, r 100%)     // IE 10+
+    background linear-gradient(to right, l 0%, r 100%)     // W3C
+
+    if ie
+        filter unquote('progid:DXImageTransform.Microsoft.gradient(startColorstr=' + l + ', endColorstr=' + r + ', GradientType=1)') // @fallback IE 6-9
