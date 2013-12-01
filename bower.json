@@ -1,6 +1,6 @@
 {
     "name": "peppercorn",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "main": "index.styl",
     "author": "Alexander Lobashev",
     "ignore": []

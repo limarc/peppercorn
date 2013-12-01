@@ -15,7 +15,7 @@ gradient-vertical(t, b)
     background linear-gradient(to bottom, t 0%, b 100%)    // W3C
 
     if ie
-        filter unquote('progid:DXImageTransform.Microsoft.gradient(startColorstr=' + t + ', endColorstr=' + b + ', GradientType=0)') // @fallback IE 6-9
+        filter unquote('progid:DXImageTransform.Microsoft.gradient(startColorstr=' + fullcolor(t) + ', endColorstr=' + fullcolor(b) + ', GradientType=0)') // @fallback IE 6-9
 
 // Simple horizontal gradient.
 gradient-horizontal(l, r)
@@ -28,4 +28,28 @@ gradient-horizontal(l, r)
     background linear-gradient(to right, l 0%, r 100%)     // W3C
 
     if ie
-        filter unquote('progid:DXImageTransform.Microsoft.gradient(startColorstr=' + l + ', endColorstr=' + r + ', GradientType=1)') // @fallback IE 6-9
+        filter unquote('progid:DXImageTransform.Microsoft.gradient(startColorstr=' + fullcolor(l) + ', endColorstr=' + fullcolor(r) + ', GradientType=1)') // @fallback IE 6-9
+
+// Simple horizontal gradient auto.
+gradient-horizontal-auto(args...)
+    g = unquote(join(',', arguments))
+
+    background-color arguments[1]                  // Old browsers
+    background -moz-linear-gradient(left, g)       // FF 3.6+
+    background -webkit-linear-gradient(left, g)    // Chrome 10+, Safari 5.1+
+    background -o-linear-gradient(left, g)         // Opera 11.10+
+    background -ms-linear-gradient(left, g)        // IE 10+
+    background linear-gradient(left, g)            // W3C
+
+// Full color #rgb > #rrggbb.
+// https://github.com/LearnBoost/stylus/issues/386
+digit(v)
+    return (""+v "A" "B" "C" "D" "E" "F")[max(0, v - 9)]
+
+hex(n)
+    h = floor(n / 16) % 16
+    l = n % 16
+    digit(h) + digit(l)
+
+fullcolor(x)
+    "#" + hex(red(x)) + hex(green(x)) + hex(blue(x))

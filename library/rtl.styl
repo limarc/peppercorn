@@ -3,7 +3,6 @@
  */
 
 rtl ?= false
-rtl-class ?= 'revert-text-direction'
 
 // Sets a opposites of the property.
 rtl-property()
@@ -70,134 +69,71 @@ rtl-direction-shadow()
 rtl-text-align()
     text-align arguments
 
-    .{rtl-class} &
-        text-align rtl-direction(arguments)
-
 // Float.
 rtl-float()
     float arguments
-
-    .{rtl-class} &
-        float rtl-direction(arguments)
 
 // Clear.
 rtl-clear()
     clear arguments
 
-    .{rtl-class} &
-        clear rtl-direction(arguments)
-
 // Position.
 rtl-left()
     left arguments
 
-    .{rtl-class} &
-        left auto
-        right arguments
-
 rtl-right()
     right arguments
-
-    .{rtl-class} &
-        left arguments
-        right auto
 
 // Margin.
 rtl-margin()
     margin arguments
 
-    .{rtl-class} &
-        margin rtl-direction(arguments)
-
 rtl-margin-left()
     margin-left arguments
 
-    .{rtl-class} &
-        margin-left 0
-        margin-right arguments
-
 rtl-margin-right()
     margin-right arguments
-
-    .{rtl-class} &
-        margin-left arguments
-        margin-right 0
 
 // Padding.
 rtl-padding()
     padding arguments
 
-    .{rtl-class} &
-        padding rtl-direction(arguments)
-
 rtl-padding-left()
     padding-left arguments
 
-    .{rtl-class} &
-        padding-left 0
-        padding-right arguments
-
 rtl-padding-right()
     padding-right arguments
-
-    .{rtl-class} &
-        padding-left arguments
-        padding-right 0
 
 // Border.
 rtl-border()
     border arguments
 
+rtl-border-hor(left, right)
+    border-left left
+    border-right right
+
 rtl-border-left()
     border-left arguments
-
-    .{rtl-class} &
-        border-left none
-        border-right arguments
 
 rtl-border-right()
     border-right arguments
 
-    .{rtl-class} &
-        border-left arguments
-        border-right none
-
 rtl-border-left-width()
     border-left-width arguments
-
-    .{rtl-class} &
-        border-left-width none
-        border-right-width arguments
 
 rtl-border-right-width()
     border-right-width arguments
 
-    .{rtl-class} &
-        border-left-width arguments
-        border-right-width none
-
 rtl-border-width()
     border-width arguments
-
-    .{rtl-class} &
-        border-width rtl-direction(arguments)
 
 // Radius.
 rtl-border-radius()
     border-radius arguments
 
-    .{rtl-class} &
-        border-radius rtl-direction(arguments)
-
 // Shadow.
 rtl-box-shadow()
     box-shadow arguments
 
-    .{rtl-class} &
-        box-shadow rtl-direction(arguments)
-
 rtl-text-shadow()
     text-shadow arguments
-
-    .{rtl-class} &
-        text-shadow rtl-direction(arguments)

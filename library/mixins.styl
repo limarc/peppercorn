@@ -53,37 +53,10 @@ animation-fill-mode()
 appearance()
     appearance -vendor(webkit moz ms o, arguments)
 
-// Corrects a property the background-clip.
-// @see http://caniuse.com/#feat=background-img-opts
-background-clip()
-    background-clip -vendor(webkit, arguments)
-
 // Corrects a property the border-image.
 // @see http://caniuse.com/#feat=border-image
 border-image()
     border-image -vendor(webkit moz ms o, arguments)
-
-// Corrects a property the border-radius.
-// @see http://caniuse.com/#feat=border-radius
-border-radius()
-    border-radius -vendor(webkit moz, arguments)
-
-border-top-left-radius()
-    border-top-left-radius -vendor(webkit moz, arguments)
-
-border-top-right-radius()
-    border-top-right-radius -vendor(webkit moz, arguments)
-
-border-bottom-right-radius()
-    border-bottom-right-radius -vendor(webkit moz, arguments)
-
-border-bottom-left-radius()
-    border-bottom-left-radius -vendor(webkit moz, arguments)
-
-// Corrects a property the box-shadow.
-// @see http://caniuse.com/#feat=css-boxshadow
-box-shadow()
-    box-shadow -vendor(webkit moz, arguments)
 
 // Corrects a property the box-sizing.
 // @see http://caniuse.com/#feat=css3-boxsizing
@@ -242,19 +215,19 @@ transform-skew()
 // Corrects a property the transition.
 // @see http://caniuse.com/#feat=css-transitions
 transition()
-    transition -vendor(webkit moz ms o, arguments)
+    transition -vendor(webkit o, arguments)
 
 transition-delay()
-    transition-delay -vendor(webkit moz ms o, arguments)
+    transition-delay -vendor(webkit o, arguments)
 
 transition-duration()
-    transition-duration -vendor(webkit moz ms o, arguments)
+    transition-duration -vendor(webkit o, arguments)
 
 transition-property()
-    transition-property -vendor(webkit moz ms o, arguments)
+    transition-property -vendor(webkit o, arguments)
 
 transition-timing-function()
-    transition-timing-function -vendor(webkit moz ms o, arguments)
+    transition-timing-function -vendor(webkit o, arguments)
 
 /* Others
    ========================================================================== */
